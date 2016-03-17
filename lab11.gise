@@ -22,50 +22,61 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="lab11.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="framebuffer_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="framebuffer_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="framebuffer_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="framebuffer_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
-    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="sramController_stx_beh.prj"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="tb_sramController_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="tb_sramController_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="tb_sramController_isim_beh.wdb"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="tb_sramController_stx_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1458233221" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1458233220">
-      <status xil_pn:value="SuccessfullyRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1458233376" xil_pn:in_ck="3555528682957259355" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1458233376">
+    <transform xil_pn:end_ts="1458251618" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1458251618">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputAdded"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
+    </transform>
+    <transform xil_pn:end_ts="1458251618" xil_pn:in_ck="3963882486875708240" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1458251618">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="cellram.v"/>
       <outfile xil_pn:name="cellram_parameters.vh"/>
+      <outfile xil_pn:name="framebuffer.vhd"/>
       <outfile xil_pn:name="sramController.vhd"/>
       <outfile xil_pn:name="tb_sramController.vhd"/>
       <outfile xil_pn:name="vga_timing.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1458233242" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="4306447245911956008" xil_pn:start_ts="1458233242">
+    <transform xil_pn:end_ts="1458249229" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-27028676492148760" xil_pn:start_ts="1458249229">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1458233242" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="6464089655829086762" xil_pn:start_ts="1458233242">
+    <transform xil_pn:end_ts="1458249229" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="6906424166261544938" xil_pn:start_ts="1458249229">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1458233242" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-7697783511206835056" xil_pn:start_ts="1458233242">
+    <transform xil_pn:end_ts="1458249229" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="2298181914413211536" xil_pn:start_ts="1458249229">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
-    <transform xil_pn:end_ts="1458233380" xil_pn:in_ck="3555528682957259355" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1458233380">
+    <transform xil_pn:end_ts="1458249229" xil_pn:in_ck="3963882486875708240" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1458249229">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="cellram.v"/>
+      <outfile xil_pn:name="cellram_parameters.vh"/>
+      <outfile xil_pn:name="framebuffer.vhd"/>
+      <outfile xil_pn:name="sramController.vhd"/>
+      <outfile xil_pn:name="tb_sramController.vhd"/>
+      <outfile xil_pn:name="vga_timing.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1458249236" xil_pn:in_ck="3963882486875708240" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="2774360488840961317" xil_pn:start_ts="1458249229">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
@@ -73,38 +84,20 @@
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="cellram.v"/>
-      <outfile xil_pn:name="cellram_parameters.vh"/>
-      <outfile xil_pn:name="sramController.vhd"/>
-      <outfile xil_pn:name="tb_sramController.vhd"/>
-      <outfile xil_pn:name="vga_timing.vhd"/>
-    </transform>
-    <transform xil_pn:end_ts="1458233388" xil_pn:in_ck="3555528682957259355" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-4531387629608724404" xil_pn:start_ts="1458233380">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="framebuffer_beh.prj"/>
+      <outfile xil_pn:name="framebuffer_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
       <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="tb_sramController_beh.prj"/>
-      <outfile xil_pn:name="tb_sramController_isim_beh.exe"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1458233389" xil_pn:in_ck="-874360494798339941" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="4317949769885293113" xil_pn:start_ts="1458233388">
+    <transform xil_pn:end_ts="1458249237" xil_pn:in_ck="-5807484927146962865" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-1794256689051254574" xil_pn:start_ts="1458249236">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="framebuffer_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="tb_sramController_isim_beh.wdb"/>
     </transform>
   </transforms>
 

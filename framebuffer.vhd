@@ -52,23 +52,35 @@ architecture Behavioral of framebuffer is
            MemDB : inout  STD_LOGIC_VECTOR (15 downto 0));
 	end component;
 	
-	
+		
+--signals and stuff for the VGA Timer
 signal HS_next, VS_next : STD_LOGIC;
 signal blank, last_column, last_row : STD_LOGIC;
 signal green_next, red_next, green_disp, red_disp : STD_LOGIC_VECTOR(2 downto 0);
 signal pixel_x, pixel_y  : STD_LOGIC_VECTOR (9 downto 0);
 signal blue_disp, blue_next : STD_LOGIC_VECTOR ( 1 downto 0);
 signal data_in_top : std_logic_vector(15 downto 0);
+signal addrTop : std_logic_vector(22 downto 0) := (others=>'0');
+signal dataintop : std_logic_vector(15 downto 0) := (others=>'0');
 
 signal color : std_logic_vector (7 downto 0);
-constant black : std_logic_vector(7 downto 0) := "00000000";
-constant blue : std_logic_vector(7 downto 0) := "00000011";
-constant green : std_logic_vector(7 downto 0) := "00011100";
-constant cyan : std_logic_vector(7 downto 0) := "00011111";
-constant red : std_logic_vector(7 downto 0) := "11100000";
-constant magenta : std_logic_vector(7 downto 0) := "11100011";
-constant yellow : std_logic_vector(7 downto 0) := "11111100";
-constant white : std_logic_vector(7 downto 0) := "11111111";
+
+---- Signals for the SRAM
+	signal dataout, dataout_next : std_logic_vector(15 downto 0);
+	signal memtop, rwtop : std_logic := '1';
+	signal dvtop, readytop, rsttop : std_logic;
+	
+	-------------------------FIFO SIGNALS------------------------------------====
+	constant fifo_DATA_WIDTH  : positive := 16; --the color of 2 pixels
+	constant FIFO_DEPTH	: positive := 4; --might not even need this much
+	signal fifo_WriteEn	:  STD_LOGIC;
+	signal fifo_DataIn	:STD_LOGIC_VECTOR (fifo_DATA_WIDTH - 1 downto 0);
+	signal fifo_ReadEn	:STD_LOGIC;
+	signal fifo_DataOut	:STD_LOGIC_VECTOR (fifo_DATA_WIDTH - 1 downto 0);
+	signal fifo_Empty	: STD_LOGIC;
+	signal fifo_Full	: STD_LOGIC;
+	--+======================================================================
+
 
 begin
 
@@ -98,20 +110,11 @@ begin
 process(clk)
 	begin
 	if(clk'event and clk='1') then
-			h0r <= HS_next;
-			v0r <= VS_next;
-			h1r <= h1next;
-			v1r <= v1next;
-			Hsync <= hnext;
-			Vsync <= vnext;
+			Hsync <= HS_next;
+			Vsync <= VS_next;
 			vgaRed <= red_next;
 			vgaGreen <= green_next;
 			vgaBlue <= blue_next;
-			btn0 <= btn0next;
-			c_reg <= c_next;
-			rowreg <= rownext;
-			colreg <= colnext;
-			state_reg<=state_next;
 		end if;
 end process;
 
@@ -126,5 +129,82 @@ end process;
 	blue_next <= blue_disp when blank = '0' else 
 			"00";
 
-end Behavioral;
+	--FIFO LOGIC=========================================================================
+	
+	--this is part of the SRAM process (look in your top module)
+		process(clk)
+		begin
+			if(clk'event and clk='1') then
+				dataout <= dataout_next; --dataout_next from SRAMcontroller
+			end if;
+		end process;
+		
+	--so when we read from our SRAM, we need set our fifo_writeEn high
+	fifo_writeEn <= '1' when dvtop = '1' else --this might not be correct, but its close. 
+							'0';
+	--use data valid?
+	
+	
+	 fifo_dataIn <= dataout; 
+	 
+	-- Memory Pointer Process
+	fifo_proc : process (CLK)
+		type FIFO_Memory is array (0 to FIFO_DEPTH - 1) of STD_LOGIC_VECTOR (fifo_DATA_WIDTH - 1 downto 0);
+		variable Memory : FIFO_Memory;
+		variable Head : natural range 0 to FIFO_DEPTH - 1;
+		variable Tail : natural range 0 to FIFO_DEPTH - 1;
+		variable Looped : boolean;
+	begin
+		if (clk'event and clk = '1') then
+			if btn0 = '1' then
+				Head := 0;
+				Tail := 0;	
+				Looped := false;
+				fifo_Full  <= '0';
+				fifo_Empty <= '1';
+			else
+				if (fifo_ReadEn = '1') then
+					if ((Looped = true) or (Head /= Tail)) then
+						-- Update data output
+						fifo_DataOut <= Memory(Tail);	
+						-- Update Tail pointer as needed
+						if (Tail = FIFO_DEPTH - 1) then
+							Tail := 0;
+							Looped := false;
+						else
+							Tail := Tail + 1;
+						end if;	
+					end if;
+				end if;
+				
+				if (fifo_WriteEn = '1') then
+					if ((Looped = false) or (Head /= Tail)) then
+						-- Write Data to Memory
+						Memory(Head) := fifo_DataIn;	
+						-- Increment Head pointer as needed
+						if (Head = FIFO_DEPTH - 1) then
+							Head := 0;
+							Looped := true;
+						else
+							Head := Head + 1;
+						end if;
+					end if;
+				end if;
+				
+				-- Update Empty and Full flags
+				if (Head = Tail) then
+					if Looped then
+						fifo_Full <= '1';
+					else
+						fifo_Empty <= '1';
+					end if;
+				else
+					fifo_Empty	<= '0';
+					fifo_Full	<= '0';
+				end if;
+			end if;
+		end if;
+	end process;
+	--=======================================================================
 
+end Behavioral;

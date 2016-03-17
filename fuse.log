@@ -1,28 +1,22 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "J:/Classes/ECEn 320/lab11/tb_sramController_isim_beh.exe" -prj "J:/Classes/ECEn 320/lab11/tb_sramController_beh.prj" "work.tb_sramController" "work.glbl" 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o J:/Documents/ECEn320/lab11c3/framebuffer_isim_beh.exe -prj J:/Documents/ECEn320/lab11c3/framebuffer_beh.prj work.framebuffer 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
-Analyzing Verilog file "J:/Classes/ECEn 320/lab11/cellram.v" into library work
-Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
-Parsing VHDL file "J:/Classes/ECEn 320/lab11/sramController.vhd" into library work
-Parsing VHDL file "J:/Classes/ECEn 320/lab11/tb_sramController.vhd" into library work
+Parsing VHDL file "J:/Documents/ECEn320/lab11c3/vga_timing.vhd" into library work
+Parsing VHDL file "J:/Documents/ECEn320/lab11c3/sramController.vhd" into library work
+Parsing VHDL file "J:/Documents/ECEn320/lab11c3/framebuffer.vhd" into library work
 Starting static elaboration
 Completed static elaboration
-Compiling module glbl
-Compiling module cellram_pathdelay
-Compiling module cellram(7.0,20.0,70.0,70.0,5.0,7...
 Compiling package standard
 Compiling package std_logic_1164
-Compiling package textio
-Compiling package vl_types
 Compiling package numeric_std
+Compiling architecture behavioral of entity vga_timing [vga_timing_default]
 Compiling architecture behavioral of entity sramController [\sramController(50000000)\]
-Compiling architecture tb of entity tb_sramcontroller
+Compiling architecture behavioral of entity framebuffer
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 Compiled 8 VHDL Units
-Compiled 3 Verilog Units
-Built simulation executable J:/Classes/ECEn 320/lab11/tb_sramController_isim_beh.exe
-Fuse Memory Usage: 40000 KB
-Fuse CPU Usage: 888 ms
+Built simulation executable J:/Documents/ECEn320/lab11c3/framebuffer_isim_beh.exe
+Fuse Memory Usage: 35888 KB
+Fuse CPU Usage: 654 ms
