@@ -52,23 +52,22 @@ architecture Behavioral of framebuffer is
            MemDB : inout  STD_LOGIC_VECTOR (15 downto 0));
 	end component;
 	
-	
+--signals and stuff for the VGA Timer
 signal HS_next, VS_next : STD_LOGIC;
 signal blank, last_column, last_row : STD_LOGIC;
 signal green_next, red_next, green_disp, red_disp : STD_LOGIC_VECTOR(2 downto 0);
 signal pixel_x, pixel_y  : STD_LOGIC_VECTOR (9 downto 0);
 signal blue_disp, blue_next : STD_LOGIC_VECTOR ( 1 downto 0);
 signal data_in_top : std_logic_vector(15 downto 0);
+signal addrTop : std_logic_vector(22 downto 0) := (others=>'0');
+signal dataintop : std_logic_vector(15 downto 0) := (others=>'0');
 
 signal color : std_logic_vector (7 downto 0);
-constant black : std_logic_vector(7 downto 0) := "00000000";
-constant blue : std_logic_vector(7 downto 0) := "00000011";
-constant green : std_logic_vector(7 downto 0) := "00011100";
-constant cyan : std_logic_vector(7 downto 0) := "00011111";
-constant red : std_logic_vector(7 downto 0) := "11100000";
-constant magenta : std_logic_vector(7 downto 0) := "11100011";
-constant yellow : std_logic_vector(7 downto 0) := "11111100";
-constant white : std_logic_vector(7 downto 0) := "11111111";
+
+---- Signals for the SRAM
+	signal dataout, dataout_next : std_logic_vector(15 downto 0);
+	signal memtop, rwtop : std_logic := '1';
+	signal dvtop, readytop, rsttop : std_logic;
 
 begin
 
@@ -98,20 +97,11 @@ begin
 process(clk)
 	begin
 	if(clk'event and clk='1') then
-			h0r <= HS_next;
-			v0r <= VS_next;
-			h1r <= h1next;
-			v1r <= v1next;
-			Hsync <= hnext;
-			Vsync <= vnext;
+			Hsync <= HS_next;
+			Vsync <= VS_next;
 			vgaRed <= red_next;
 			vgaGreen <= green_next;
 			vgaBlue <= blue_next;
-			btn0 <= btn0next;
-			c_reg <= c_next;
-			rowreg <= rownext;
-			colreg <= colnext;
-			state_reg<=state_next;
 		end if;
 end process;
 
@@ -125,6 +115,9 @@ end process;
 				"000";
 	blue_next <= blue_disp when blank = '0' else 
 			"00";
+
+
+
 
 end Behavioral;
 

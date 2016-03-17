@@ -22,6 +22,7 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="lab11.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="framebuffer_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
@@ -37,17 +38,14 @@
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
     <transform xil_pn:end_ts="1458233221" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1458233220">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1458233376" xil_pn:in_ck="3555528682957259355" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1458233376">
+    <transform xil_pn:end_ts="1458248698" xil_pn:in_ck="3963882486875708240" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1458248698">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputAdded"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="cellram.v"/>
       <outfile xil_pn:name="cellram_parameters.vh"/>
+      <outfile xil_pn:name="framebuffer.vhd"/>
       <outfile xil_pn:name="sramController.vhd"/>
       <outfile xil_pn:name="tb_sramController.vhd"/>
       <outfile xil_pn:name="vga_timing.vhd"/>
@@ -55,10 +53,12 @@
     <transform xil_pn:end_ts="1458233242" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="4306447245911956008" xil_pn:start_ts="1458233242">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1458233242" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="6464089655829086762" xil_pn:start_ts="1458233242">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1458233242" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-7697783511206835056" xil_pn:start_ts="1458233242">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -71,6 +71,7 @@
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="cellram.v"/>
