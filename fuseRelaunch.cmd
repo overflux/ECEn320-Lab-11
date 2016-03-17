@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "J:/Classes/ECEn 320/lab11/tb_sramController_isim_beh.exe" -prj "J:/Classes/ECEn 320/lab11/tb_sramController_beh.prj" "work.tb_sramController" "work.glbl" 

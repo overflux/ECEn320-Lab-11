@@ -1,0 +1,4 @@
+vhdl work "sramController.vhd"
+verilog work "cellram.v"
+vhdl work "tb_sramController.vhd"
+verilog work "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
